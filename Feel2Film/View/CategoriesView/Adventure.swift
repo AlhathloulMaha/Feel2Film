@@ -16,9 +16,11 @@ struct AdventureMovieView: View {
     var body: some View {
         ZStack() {
             //Poster
-            Image(uiImage: viewModel.newAdventureMovies.poster.load() )
-                .resizable()
-                .ignoresSafeArea()
+//            Image(uiImage: viewModel.newAdventureMovies.poster.load() )
+//                .resizable()
+//                .ignoresSafeArea()
+            
+            Color.red
             
             VStack{
                 
