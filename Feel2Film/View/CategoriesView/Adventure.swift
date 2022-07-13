@@ -6,22 +6,20 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct AdventureMovieView: View {
     
     @EnvironmentObject var viewModel : MovieVM
     @Binding var presentView:Bool
-    @State private var isExpanded: Bool = false
     
     var body: some View {
         ZStack() {
             //Poster
-//            Image(uiImage: viewModel.newAdventureMovies.poster.load() )
-//                .resizable()
-//                .ignoresSafeArea()
-            
-            Color.red
-            
+            KFImage(URL(string: viewModel.newAdventureMovies.poster)!)
+                .resizable()
+                .ignoresSafeArea()
+
             VStack{
                 
                 //Dissmis & Other movie button
@@ -62,15 +60,15 @@ struct AdventureMovieView: View {
                     HStack(spacing: 5) {
                         Text(viewModel.newAdventureMovies.name)
                             .foregroundColor(.white)
-                            .font(.system(size: 26, weight: .bold, design: .rounded))
-                            .lineLimit(2)
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
                         
-                         Text("(\(viewModel.newAdventureMovies.releaseDate))")
+                        +  Text(" (\(viewModel.newAdventureMovies.releaseDate))")
                             .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .bold, design: .rounded))
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     .padding(.top , 5)
+
                     
                     
                     //Movie rating
@@ -86,7 +84,7 @@ struct AdventureMovieView: View {
                             .foregroundColor(.white)
                         
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     
                     //Movie category
@@ -107,14 +105,14 @@ struct AdventureMovieView: View {
                         }
                     }
                     .frame(maxWidth: .infinity , alignment : . leading)
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     //Movie description
                     
                     Text(viewModel.newAdventureMovies.description)
                         .foregroundColor(.white)
                         .font(.system(size: 18, weight: .regular, design: .rounded))
-                        .padding(.horizontal , 15)
+                        .padding(.horizontal , 10)
                     
                 }
                 .padding()
@@ -132,7 +130,7 @@ struct AdventureMovieView: View {
             
         }
         .onAppear(){viewModel.fakeNetworkCall()}
-        
+
     }
 }
 

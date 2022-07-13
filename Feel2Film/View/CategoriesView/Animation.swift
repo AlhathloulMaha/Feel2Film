@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct AnimationMovieView: View {
     @EnvironmentObject var viewModel : MovieVM
@@ -14,7 +15,7 @@ struct AnimationMovieView: View {
     var body: some View {
         ZStack() {
             //Poster
-            Image(uiImage: viewModel.newAnimationMovies.poster.load() )
+            KFImage(URL(string: viewModel.newAnimationMovies.poster)!)
                 .resizable()
                 .ignoresSafeArea()
             
@@ -58,14 +59,13 @@ struct AnimationMovieView: View {
                     HStack(spacing: 5) {
                         Text(viewModel.newAnimationMovies.name)
                             .foregroundColor(.white)
-                            .font(.system(size: 26, weight: .bold, design: .rounded))
-                            .lineLimit(2)
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
                         
-                        Text("(\(viewModel.newAnimationMovies.releaseDate))")
+                        +  Text(" (\(viewModel.newAnimationMovies.releaseDate))")
                             .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .bold, design: .rounded))
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     .padding(.top , 5)
                     
                     //Movie rating
@@ -81,7 +81,7 @@ struct AnimationMovieView: View {
                             .foregroundColor(.white)
                         
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     
                     //Movie category
@@ -102,14 +102,14 @@ struct AnimationMovieView: View {
                         }
                     }
                     .frame(maxWidth: .infinity , alignment : . leading)
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     //Movie description
                     
                     Text(viewModel.newAnimationMovies.description)
                         .foregroundColor(.white)
                         .font(.system(size: 18, weight: .regular, design: .rounded))
-                        .padding(.horizontal , 15)
+                        .padding(.horizontal , 10)
                     
                 }
                 .padding()

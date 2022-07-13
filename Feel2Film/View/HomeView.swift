@@ -25,16 +25,13 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Color.backGround
-                .ignoresSafeArea()
+        
             
             Rectangle()
                 .fill(
                     AngularGradient(gradient: Gradient(colors: [.backGround,.rectangleColor]),
                                     center: .topLeading,
-                                    angle: .degrees(-15))
-                    
-
+                                    angle: .degrees(-10))
                     
                     
                 )
@@ -46,7 +43,7 @@ struct HomeView: View {
                 
                 Image("AppIconImage")
                     .resizable()
-                    .frame(width:70,height:110)
+                    .frame(width:83,height:112)
                     .padding()
                 
                 Text("How are you feeling now?")
@@ -95,52 +92,56 @@ struct HomeView: View {
                         VStack {
                             HStack(spacing:1) {
                                 Image(systemName: "arrow.down.backward")
-                                    .foregroundColor(.white)
-                                    .font(.system(size:20))
+                                    .foregroundColor(.gray)
+                                    .font(.system(size:18))
                                 
                                 Text("Roll it!")
-                                    .foregroundColor(.rectangleColor)
+                                    .foregroundColor(.gray)
                                     .font(.system(size:20))
                                 
                             }
-                            .padding()
+                            .padding([.top ,.horizontal])
                         }
                     }
                     
-                    VStack(alignment:.leading) {
-                        Text("Discover Top-Rated Movies with Just One Click!")
-                            .font(.system(size: 29, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                        
-                            .padding(.bottom , 5)
+                        VStack(alignment:.center) {
+                            
+                            Text("Find Movies🔍")
+                                .font(.system(size: 30, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding(.top , 40)
+                                .padding(.bottom , 10)
+                            
+                            Text("Discover top-rated movies that matches your mood with just ONE CLICK!")
+                                .font(.system(size: 20, weight: .regular, design: .rounded))
+                                .foregroundColor(.gray)
+                         .multilineTextAlignment(.center)
                             .padding(.horizontal , 10)
+                            .padding(.bottom , 40)
                         
-                        Text("Identify your mood, Click and Boom! enjoy the movie 🍿")
-                            .font(.system(size: 24, weight: .regular, design: .rounded))
-                            .foregroundColor(.gray)
-                            .padding(.horizontal , 10)
-                    }
-
-                    
-                    Spacer()
-                    
-                    Button {
-                        isFirstLaunch.toggle()
-                    } label: {
-                        HStack{
-                            Text("Get Started")
-                                .font(.system(size:24 , weight:.light))
-                                .underline()
-                            Image(systemName: "arrow.forward")
-                                .font(.system(size:24 , weight:.light))
+                            
+                            Spacer()
+                            
+                            
+                            Button {
+                                isFirstLaunch.toggle()
+                            } label: {
+                                Text("Get Started")
+                                    .font(.system(size:24 , weight:.bold,design: .rounded))
+                                    .foregroundColor(.black)
+                                    .padding(5)
+                                    .padding(.horizontal,10)
+                                    .background(Color.rectangleColor)
+                                    .cornerRadius(30)
+                            }
+                            
+                            
+                            Spacer()
                         }
-                        .foregroundColor(.rectangleColor)
-                        .padding()
-                        .frame(maxWidth:.infinity , alignment: .trailing)
-                    }
+                                
                     
                     
-                    Spacer()
                 }
                 
             }
@@ -153,7 +154,7 @@ extension HomeView {
     
     var firstHStack: some View {
         
-        HStack(spacing:20){
+        HStack(spacing:18){
             
             Button {
                 presentAdventureView.toggle()
@@ -221,7 +222,7 @@ extension HomeView {
     
     var secondHStack: some View {
         
-        HStack(spacing:20) {
+        HStack(spacing:18) {
             
             
             Button {
@@ -262,7 +263,7 @@ extension HomeView {
             }.fullScreenCover(isPresented: $presentMysteryView) {
                 MysteryMovieView(presentView: $presentMysteryView).environmentObject(viewModel)
             }
-        
+            
             
             
             
@@ -285,7 +286,7 @@ extension HomeView {
                 HorrorMovieView(presentView: $presentHorrorView).environmentObject(viewModel)
             }
             
-  
+            
             
         }
         .padding()
@@ -293,9 +294,7 @@ extension HomeView {
     
     var thirdHStack: some View {
         
-        HStack (spacing:20){
-            
-            
+        HStack (spacing:18){
             
             Button {
                 presentAnimationView.toggle()
@@ -351,7 +350,7 @@ extension HomeView {
                     }
                 }
             }.fullScreenCover(isPresented: $presentDramaView) {
-               DramaMovieView(presentView: $presentDramaView).environmentObject(viewModel)
+                DramaMovieView(presentView: $presentDramaView).environmentObject(viewModel)
             }
         }
         .padding()

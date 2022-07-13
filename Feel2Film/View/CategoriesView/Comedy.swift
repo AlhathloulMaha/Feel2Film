@@ -5,21 +5,23 @@
 //  Created by Maha Alhathloul on 25/11/1443 AH.
 
 
-import SwiftUI
 
+import SwiftUI
+import Kingfisher
 
 struct ComedyMovieView: View {
     
     @EnvironmentObject var viewModel : MovieVM
     @Binding var presentView:Bool
     
+    
     var body: some View {
         ZStack() {
             //Poster
-            Image(uiImage: viewModel.newComedyMovies.poster.load() )
+            KFImage(URL(string: viewModel.newComedyMovies.poster)!)
                 .resizable()
                 .ignoresSafeArea()
-            
+       
             VStack{
                 
                 //Dissmis & Other movie button
@@ -60,16 +62,15 @@ struct ComedyMovieView: View {
                     HStack(spacing: 5) {
                         Text(viewModel.newComedyMovies.name)
                             .foregroundColor(.white)
-                            .font(.system(size: 26, weight: .bold, design: .rounded))
-                            .lineLimit(2)
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
                         
-                        Text("(\(viewModel.newComedyMovies.releaseDate))")
+                        +  Text(" (\(viewModel.newComedyMovies.releaseDate))")
                             .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .bold, design: .rounded))
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     .padding(.top , 5)
-                    
+
                     
                     //Movie rating
                     
@@ -84,7 +85,7 @@ struct ComedyMovieView: View {
                             .foregroundColor(.white)
                         
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     
                     
@@ -106,14 +107,14 @@ struct ComedyMovieView: View {
                         }
                     }
                     .frame(maxWidth: .infinity , alignment : . leading)
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     //Movie description
                     
                     Text(viewModel.newComedyMovies.description)
                         .foregroundColor(.white)
                         .font(.system(size: 18, weight: .regular, design: .rounded))
-                        .padding(.horizontal , 15)
+                        .padding(.horizontal , 10)
                     
                 }
                 .padding()
@@ -131,6 +132,7 @@ struct ComedyMovieView: View {
             
         }
         .onAppear(){viewModel.fakeNetworkCall()}
+
         
     }
 

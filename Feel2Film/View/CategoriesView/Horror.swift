@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct HorrorMovieView: View {
     @EnvironmentObject var viewModel : MovieVM
@@ -14,7 +15,7 @@ struct HorrorMovieView: View {
     var body: some View {
         ZStack() {
             //Poster
-            Image(uiImage: viewModel.newHorrorMovies.poster.load() )
+            KFImage(URL(string: viewModel.newHorrorMovies.poster)!)
                 .resizable()
                 .ignoresSafeArea()
             
@@ -58,15 +59,15 @@ struct HorrorMovieView: View {
                     HStack(spacing: 5) {
                         Text(viewModel.newHorrorMovies.name)
                             .foregroundColor(.white)
-                            .font(.system(size: 26, weight: .bold, design: .rounded))
-                            .lineLimit(2)
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
                         
-                        Text("(\(viewModel.newHorrorMovies.releaseDate))")
+                        +  Text(" (\(viewModel.newHorrorMovies.releaseDate))")
                             .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .bold, design: .rounded))
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     .padding(.top , 5)
+
                     
                     //Movie rating
                     
@@ -81,7 +82,7 @@ struct HorrorMovieView: View {
                             .foregroundColor(.white)
                         
                     }
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     //Movie category
                     
@@ -101,14 +102,14 @@ struct HorrorMovieView: View {
                         }
                     }
                     .frame(maxWidth: .infinity , alignment : . leading)
-                    .padding(.horizontal , 15)
+                    .padding(.horizontal , 10)
                     
                     //Movie description
                     
                     Text(viewModel.newHorrorMovies.description)
                         .foregroundColor(.white)
                         .font(.system(size: 18, weight: .regular, design: .rounded))
-                        .padding(.horizontal , 15)
+                        .padding(.horizontal , 10)
                     
                 }
                 .padding()
